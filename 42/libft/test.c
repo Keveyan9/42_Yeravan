@@ -3,5 +3,8 @@
 int main ()
 {
     printf("barev gago");
+wfawf
+fawfaw
+
     test:
 }

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 14:08:31 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 14:15:04 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/04/09 21:52:41 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/04/09 21:53:08 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include"libft.h"
+#include "libft.h"
 
-int main()
+int	ft_memcmp( const void *s1, const void *s2, size_t n)
 {
+	char	*ptr1;
+	char	*ptr2;
 
-	 char s [] = " 000114";
-	 int *p;
-	
-	p = (int *)malloc(sizeof(int) * 100000000000000000);
-	if(!p)
-		printf("---+0");
-	return(0);
-	
+	ptr1 = (char *)s1;
+	ptr2 = (char *)s2;
+	if (n == 0)
+		return (0);
+	while (--n && *ptr1 == *ptr2 && ++ptr1)
+		++ptr2;
+	return (*ptr1 - *ptr2);
 }

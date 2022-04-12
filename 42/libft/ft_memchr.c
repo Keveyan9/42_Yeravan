@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 14:08:31 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 14:15:04 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/04/07 21:07:53 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/04/07 21:08:15 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include"libft.h"
+#include "libft.h"
 
-int main()
+void	*ft_memchr(const void *s, int c, size_t n)
 {
+	unsigned char	*sors;
 
-	 char s [] = " 000114";
-	 int *p;
-	
-	p = (int *)malloc(sizeof(int) * 100000000000000000);
-	if(!p)
-		printf("---+0");
-	return(0);
-	
+	sors = (unsigned char *)s;
+	while (n-- && *sors && *sors != (unsigned char)c)
+		sors++;
+	if (*sors == (unsigned char)c)
+		return (sors);
+	return (0);
 }

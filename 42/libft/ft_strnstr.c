@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 14:08:31 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 14:15:04 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/04/10 20:51:26 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/04/10 20:52:24 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include"libft.h"
+#include "libft.h"
 
-int main()
+char	*ft_strnstr(const char *haystack, const char *needle, size_t loc)
 {
+	size_t	t;
 
-	 char s [] = " 000114";
-	 int *p;
-	
-	p = (int *)malloc(sizeof(int) * 100000000000000000);
-	if(!p)
-		printf("---+0");
-	return(0);
-	
+	t = 0;
+	if (!*needle)
+		return ((char *)haystack);
+	while (needle && *haystack && loc)
+	{	
+		t = 0 ;
+		while (needle[t] && needle[t] == *haystack && loc--)
+		{
+			t++;
+			haystack++;
+			if (!needle[t])
+				return ((char *)haystack - t);
+		}		
+		haystack++;
+		loc--;
+	}
+	return (NULL);
 }

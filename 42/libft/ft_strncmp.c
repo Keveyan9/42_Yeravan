@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 14:08:31 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 14:15:04 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/04/07 16:53:57 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/04/07 16:54:51 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include"libft.h"
+#include "libft.h"
 
-int main()
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-
-	 char s [] = " 000114";
-	 int *p;
-	
-	p = (int *)malloc(sizeof(int) * 100000000000000000);
-	if(!p)
-		printf("---+0");
-	return(0);
-	
+	if (n == 0)
+		return (0);
+	while (*s1 && --n && *s1 == *s2 && s2++)
+		s1++;
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

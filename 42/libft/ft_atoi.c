@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 14:08:31 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 14:15:04 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/04/11 15:29:28 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/04/11 15:29:30 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include"libft.h"
+#include "libft.h"
 
-int main()
+int	ft_atoi(const char *str)
 {
+	int	res ;
 
-	 char s [] = " 000114";
-	 int *p;
-	
-	p = (int *)malloc(sizeof(int) * 100000000000000000);
-	if(!p)
-		printf("---+0");
-	return(0);
-	
+	res = 0;
+	while (*str == ' ' || *str == '\n' || *str == '\t'
+		||*str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	if (*str == '-' || *str == '+')
+		str++;
+	if (*str == '-' || *str == '+')
+		return (0);
+	while (*str >= '0' && *str <= '9' && *str)
+	{
+		res = (res * 10) +(*str - '0');
+		str++;
+	}
+	return (res);
 }

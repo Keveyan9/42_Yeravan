@@ -10,10 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-size_t ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize)
-{
-	if(size > 1|| size < ft_strlen(dst))
-		return(ft_strlen(src)+size);
-		
-}
 
+size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+{
+	size_t	lensrc ;
+	size_t	lendest ;
+	size_t	n;
+
+	lensrc = ft_strlen(src);
+	lendest = ft_strlen(dst);
+	n = 0;
+	if (dstsize < lendest)
+		return (lensrc + dstsize);
+	while (src[n++] && n < dstsize - 1)
+		dst[lendest - 1 + n] = src[n];
+	dst[n] = '\0';
+	return (lendest + lensrc);
+}

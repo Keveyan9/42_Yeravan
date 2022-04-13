@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 14:08:31 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 14:15:04 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/04/12 22:00:44 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/04/12 22:38:38 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-int main()
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char s [] = "fwafaewgfesgew";
-	char s2[] = "fw";
+	char	*str;
+	size_t	size;
+	size_t startindex;
 	
-		printf("%s",ft_strtrim(s,s2));
-	return(0);
-	
+	startindex = 0;
+	size	= ft_strlen(s1)-1;
+	while (s1[startindex] && ft_strchr(set, s1[startindex]))
+		startindex++;
+	while (0 < size - startindex && ft_strchr (set, s1[size]))
+		size--;
+	str = ft_substr(s1 + startindex, 0, (size - startindex + 1));
+	return (str);	
 }
+

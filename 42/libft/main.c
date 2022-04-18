@@ -14,10 +14,14 @@
 
 int main()
 {
-	char s [] = "fwafaewgfesgew";
-	char s2[] = "fw";
+	int sors = 144557;
+	char c [15]= "1234";
+	char src []= "56789";
 	
-		printf("%s",ft_strtrim(s,s2));
+		printf("%s\n",c);
+	printf("%zu\n",ft_strlcat(c,src,8));
+		printf("%s\n",c);
+
+
 	return(0);
-	
 }

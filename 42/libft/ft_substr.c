@@ -17,6 +17,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	n;
 	size_t	chap;
 
+	n = 0;
 	chap = 0;
 	while (!s && s[start++] && len--)
 		chap++;

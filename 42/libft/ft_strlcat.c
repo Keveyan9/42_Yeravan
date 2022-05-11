@@ -15,20 +15,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	lensrc ;
 	size_t	lendest ;
-	size_t	n;
+	size_t	n ;
+	size_t	t ;
 
 	lensrc = ft_strlen(src);
 	lendest = ft_strlen(dst);
 	n = 0;
-	if (dstsize < lendest)
+	if (dstsize < 1 || dstsize < lendest)
 		return (lensrc + dstsize);
-	while (src[n] && n <= dstsize)
-	{
-		dst[lendest + n ] = src[n];
-		printf("--%lu--",lendest + n );
-			printf("--%lu--\n",n );
-		n++;
-	}
-	dst[n+1 ] = '\0';
+	t = lendest;
+	while (src[n] && t < dstsize - 1)
+			dst[t++] = src[n++];
+		dst[lendest + n] = '\0';
 	return (lendest + lensrc);
 }

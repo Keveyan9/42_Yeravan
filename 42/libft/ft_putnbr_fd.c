@@ -9,5 +9,12 @@
 /*   Updated: 2022/04/14 15:59:33 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	*back;
+	
+	back = ft_itoa(n);
+	write(fd,back,ft_strlen(back));
+}

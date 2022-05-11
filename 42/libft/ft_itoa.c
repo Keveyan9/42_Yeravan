@@ -11,19 +11,26 @@
 /* ************************************************************************** */
 #include "libft.h"
 
+void calem(long int *n1,size_t *calemb)
+	{
+		while (*n1 > 9 )
+		{
+			*n1 /= 10;
+			(*calemb)++;
+		}
+	}
+
 char	*ft_itoa(int n)
 {
 	size_t	calemb;
 	char	*back;
-	int	n1;
+	long int	n1;
 
-	n1 = n;
 	calemb = 0;
-	while (n1 > 9)
-	{
-		n1 = n1 / 10;
-		calemb++;
-	}
+	if (n < 0 && !calemb++)
+		n = -n;
+	n1 = n;
+	calem(&n1,&calemb);
 	back =(char *)malloc(calemb + 2);
 		if(!back)
 			return(NULL);
@@ -33,6 +40,8 @@ char	*ft_itoa(int n)
 		back[calemb--] = '0' + n % 10;
 		n = n/10;
 	}
-	back[calemb] = '0' + n;
+	back[calemb--] = '0' + n;
+	if(calemb == 0)
+		back[calemb] = '-';
 	return(back);
 }

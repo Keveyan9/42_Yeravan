@@ -25,5 +25,5 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	else
 		while (len--)
 			*dstuse++ = *srcuse++;
-	return (dstuse);
+	return (dst);
 }

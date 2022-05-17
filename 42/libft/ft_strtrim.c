@@ -13,17 +13,16 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	size_t	size;
-	size_t startindex;
-	
+	char		*str;
+	size_t		size;
+	size_t		startindex;
+
 	startindex = 0;
-	size	= ft_strlen(s1)-1;
+	size = ft_strlen(s1) - 1;
 	while (s1[startindex] && ft_strchr(set, s1[startindex]))
 		startindex++;
 	while (0 < size - startindex && ft_strchr (set, s1[size]))
 		size--;
 	str = ft_substr(s1 + startindex, 0, (size - startindex + 1));
-	return (str);	
+	return (str);
 }
-

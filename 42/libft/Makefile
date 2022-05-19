@@ -1,31 +1,29 @@
-NAME		= libft.a
-SRCS		= $(shell find "." -name "*.c" ! -name "ft_lst*.c")
-BONUS_SRCS	= $(shell find "." -name "ft_lst*.c")
-OBJS		= $(SRCS:.c=.o)
-BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
-INCS		= -I.
-CFLAGS		= -Wall -Wextra -Werror $(INCS)
-AR			= ar rcs
-RM			= rm -f
-CC			= cc
+NAME = libft.a
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+CC	=	cc
 
-all:	$(NAME)
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME):	$(OBJS)
+ALL_SRCS = $(wildcard *.c)
+
+BONUS_SRCS = $(wildcard ft_lst*.c)
+
+SRCS = $(filter-out $(BONUS_SRCS), $(ALL_SRCS))
+
+OBJS = $(patsubst %.c, %.o, $(SRCS))
+
+BONUS_OBJS = $(patsubst %.c, %.o, $(BONUS_SRCS))
+
+RM = rm -f
+
+AR = ar rcs
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-bonus:	${BONUS_OBJS}
-	$(AR) $(NAME) $(BONUS_OBJS)
-
-clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
-
-fclean: clean
-	$(RM) $(NAME)
-
-re: fclean all
-
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re bonus

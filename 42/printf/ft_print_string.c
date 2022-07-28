@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 11:45:29 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/03/18 13:23:35 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/07/19 20:23:38 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/07/19 20:28:58 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "ft_printf.h"
 
-int	ft_isdigit(int c)
+void	ft_print_string(int *len, char *c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}	
+	while ( *c && *c != '\0')
+	{   write(1,c,1);
+		c++;
+		(*len)++;
+	}
+}
+
+
+

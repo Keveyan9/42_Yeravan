@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_address.c                                 :+:      :+:    :+:   */
+/*   ft_print_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 19:37:32 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/07/25 19:37:33 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/07/30 12:46:39 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/07/30 12:47:15 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"printf.h"
+#include "ft_printf.h"
 
-// void	ft_print_addres(int *len, void *c)
-// {
-// 	while(*c)
-// 	{
-		
-// 	}
-// }
+void ft_print_number ( int *len,int number)
+{
+	unsigned int n ;
+	char d;
+
+	 n = number;
+	
+	if (number < 0)
+		{
+			n = -number;
+			write(1,"-",1);
+		(*len)++;
+		}
+		if (n >= 10)
+			ft_print_number(len,n/10);
+		d = n%10 + '0';
+		write(1,&d,1);
+		(*len)++;
+}

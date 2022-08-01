@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_print_hex(int *len, char *c)
-{
+// void	ft_print_hex(int *len, char *c)
+// {
 
-}
+// }

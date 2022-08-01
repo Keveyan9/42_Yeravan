@@ -24,7 +24,7 @@
 # re: fclean all
 
 # .PHONY: all clean fclean re
-NAME		= libft.a
+NAME		= libftprintf.a
 SRCS		= $(shell find "." -name "*.c" ! -name "ft_lst*.c")
 BONUS_SRCS	= $(shell find "." -name "ft_lst*.c")
 OBJS		= $(SRCS:.c=.o)

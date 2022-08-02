@@ -15,10 +15,6 @@ void	ft_print_string(int *len, char *c)
 {
 	if (!c)
 		c = "(null)";
-	while ( *c && *c != '\0')
-	{
-		write(1,c,1);
-		c++;
-		(*len)++;
-	}
+	while (*c && *c != '\0')
+		(*len) += write (1, c++, 1);
 }

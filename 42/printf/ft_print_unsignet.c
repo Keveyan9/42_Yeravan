@@ -11,14 +11,12 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void ft_print_unsigned( int *len,unsigned int num)
+void	ft_print_unsigned( int *len, unsigned int num)
 {
-	char d;
-	
-		if (num >= 10)
-			ft_print_unsigned(len,num/10);
-		d = num%10 + '0';
-		write(1,&d,1);
-		(*len)++;
-}
+	char	d;
 
+	if (num >= 10)
+		ft_print_unsigned(len, num / 10);
+	d = num % 10 + '0';
+	(*len) += write(1, &d, 1);
+}

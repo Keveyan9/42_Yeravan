@@ -11,22 +11,19 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void ft_print_number ( int *len,int number)
+void	ft_print_number( int *len, int number)
 {
-	unsigned int n ;
-	char d;
+	unsigned int	n;
+	char			d;
 
-	 n = number;
-	
+	n = number;
 	if (number < 0)
-		{
-			n = -number;
-			write(1,"-",1);
-		(*len)++;
-		}
-		if (n >= 10)
-			ft_print_number(len,n/10);
-		d = n%10 + '0';
-		write(1,&d,1);
-		(*len)++;
+	{
+		n = -number;
+	(*len) += write(1, "-", 1);
+	}
+	if (n >= 10)
+		ft_print_number(len, n / 10);
+	d = n % 10 + '0';
+	(*len) += write(1, &d, 1);
 }

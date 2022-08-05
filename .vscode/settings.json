@@ -1,3 +1,7 @@
 {
-	"C_Cpp.errorSquiggles": "Disabled"
+	"C_Cpp.errorSquiggles": "Disabled",
+	"files.associations": {
+		"get_next_line.h": "c",
+		"algorithm": "c"
+	}
 }

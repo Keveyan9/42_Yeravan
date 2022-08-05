@@ -27,9 +27,11 @@ void	printing_convert(int *len, const char *input, va_list *argument)
 	else if (*input == 'u')
 		ft_print_unsigned(len, (va_arg(*argument, unsigned int)));
 	else if (*input == 'x')
-		ft_print_hex_lowercase(len, (va_arg(*argument, unsigned int)));
+		ft_print_hex(len, (va_arg(*argument, unsigned int)),
+			"0123456789abcdef");
 	else if (*input == 'X')
-		ft_print_hex_uppercase(len, (va_arg(*argument, unsigned int)));
+		ft_print_hex(len, (va_arg(*argument, unsigned int)),
+			"0123456789ABCDEF");
 	else if (*input == '%')
 		(*len) += write(1, "%", 1);
 }

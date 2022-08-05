@@ -11,24 +11,10 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_print_hex_lowercase(int *len, unsigned int hexcalcul)
+void	ft_print_hex(int *len, unsigned int hexcalcul, char *base)
 {
-	char	*hexform_lowercase ;
-
-	hexform_lowercase = "0123456789abcdef";
 	if (hexcalcul >= 16)
-		ft_print_hex_lowercase(len, hexcalcul / 16);
-	write(1, &hexform_lowercase[hexcalcul % 16], 1);
-	(*len)++;
-}
-
-void	ft_print_hex_uppercase(int *len, unsigned int hexcalcul)
-{
-	char	*hexform_uppercase;
-
-	hexform_uppercase = "0123456789ABCDEF";
-	if (hexcalcul >= 16)
-		ft_print_hex_uppercase(len, hexcalcul / 16);
-	write(1, &hexform_uppercase[hexcalcul % 16], 1);
+		ft_print_hex(len, hexcalcul / 16, base);
+	write(1, &base[hexcalcul % 16], 1);
 	(*len)++;
 }

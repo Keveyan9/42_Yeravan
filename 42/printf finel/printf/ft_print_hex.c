@@ -18,3 +18,4 @@ void	ft_print_hex(int *len, unsigned int hexcalcul, char *base)
 	write(1, &base[hexcalcul % 16], 1);
 	(*len)++;
 }
++

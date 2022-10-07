@@ -1,2 +1,9 @@
-f
-
+total 104
+drwxr-xr-x   8 skeveyan  2022_yerevan    272 Oct  7 18:32 .
+drwxr-xr-x  11 skeveyan  2022_yerevan    374 Sep 21 11:59 ..
+-rw-r--r--   1 skeveyan  2022_yerevan  20480 Oct  7 18:31 .pipex.c.swp
+-rwxr-xr-x   1 skeveyan  2022_yerevan  13584 Oct  7 18:32 a.out
+-rw-r--r--   1 skeveyan  2022_yerevan   5995 Oct  7 18:31 pipex.c
+-rw-r--r--   1 skeveyan  2022_yerevan    839 Oct  5 17:48 pipex.h
+-rw-r--r--   1 skeveyan  2022_yerevan    523 Oct  7 18:31 test
+-rw-r--r--   1 skeveyan  2022_yerevan      0 Oct  7 18:32 zaq

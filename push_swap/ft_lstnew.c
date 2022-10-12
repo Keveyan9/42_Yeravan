@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_max_min_dupliqet.c                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 02:08:05 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/12 20:36:07 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/10/12 13:55:44 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/10/12 18:25:01 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	error_max_min_dupliqet(long int *data, int count)
+t_list *ft_lstnew(int content)
 {
-	int	i;
-	int	i_campair;
+	t_list	*new_node;
 
-	i_campair = 0;
-	i = 0;
-	while (i < count)
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
 	{
-		if (data[i] > INT_MAX || data[i] < INT_MIN)
-		{
-			write (1, "input number non corect max and min\n", 36);
-			exit(0);
-		}
-		i_campair = i + 1;
-		while (i_campair < count)
-		{
-			if (data[i] == data[i_campair])
-			{
-				write (1, "dubliqet number error\n", 22);
-				exit(0);
-			}
-			i_campair++;
-		}
-		i++;
+		write(2, "list_malloc problems\n", 22);
+		exit (1);
 	}
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }
+
+

@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:29:28 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/11 01:40:12 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/12 20:57:13 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -32,11 +32,8 @@ long int	ft_atoi(const char *str)
 		res = (res * 10) +(*str - '0');
 		str++;
 	}
-	if(!(*str))
+	if (!(*str))
 		return (res * minus_counter);
-	else
-	{ 
-		write(1,"non corect input\n",17);
-		exit(0);
-	}
+	write (1, "non corect input\n", 17);
+	exit(0);
 }

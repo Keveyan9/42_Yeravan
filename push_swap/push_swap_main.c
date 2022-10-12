@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:34 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/11 02:45:26 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/12 21:16:51 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -14,6 +14,8 @@
 int	main(int argc, char **argv )
 {
 	t_main	var;
+	t_list *ferst_stec;
+	t_list *head;
 
 	if (argc > 3)
 	{
@@ -23,14 +25,20 @@ int	main(int argc, char **argv )
 		var.input_s = (long int *) malloc(var.wstrlen * sizeof(long int));
 		parsing(var.input_s, var.wstrlen, var.input_cuts);
 		error_max_min_dupliqet(var.input_s, var.wstrlen);
+		pour(var.input_s, var.wstrlen,&ferst_stec);
+		free(var.input_s);
+		head = ferst_stec;
 
 		int n = 0;
-		while (var.input_cuts[n])
+		while (n < var.wstrlen-1)
 		{
-			printf("## %ld ##", var.input_s[n]);
-			printf(" %s\n ", var.input_cuts[n++]);
+			printf("%d\n",ferst_stec->content);
+			ferst_stec = ferst_stec->next;
+			n++;
 		}
 	}
-	write(1, "is litl argument\n", 17);
+	else 
+		write(1, "is litl argument\n", 17);
+//	while(1);
 	return (0);
 }

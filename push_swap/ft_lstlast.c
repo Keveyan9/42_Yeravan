@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:36:42 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/12 18:32:03 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/19 23:46:18 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -21,4 +21,3 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (lst);
 }
-

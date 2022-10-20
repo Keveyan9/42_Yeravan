@@ -16,12 +16,12 @@ void	swap(t_list **swap_argument)
 	t_list	*temp;
 
 	temp = NULL;
-	(*swap_argument)->last->next = (*swap_argument)->next;
-	(*swap_argument)->next->last = (*swap_argument)->last;
-	(*swap_argument)->last = (*swap_argument)->next;
-	(*swap_argument)->next->next->last = *swap_argument;
+	(*swap_argument)->before->next = (*swap_argument)->next;
+	(*swap_argument)->next->before = (*swap_argument)->before;
+	(*swap_argument)->before = (*swap_argument)->next;
+	(*swap_argument)->next->next->before = *swap_argument;
 	temp = (*swap_argument)->next->next;
 	(*swap_argument)->next->next = *swap_argument;
 	(*swap_argument)->next = temp;
-	*swap_argument = (*swap_argument)->last;
+	*swap_argument = (*swap_argument)->before;
 }

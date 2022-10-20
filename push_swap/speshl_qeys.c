@@ -24,7 +24,7 @@ void	speshl_qeys(int count, t_list **stec_a, t_list **stec_b)
 	else if ( count == 3)
 	{
 		if ((*stec_a)->content > (*stec_a)->next->content  &&
-			   	(*stec_a)->content > (*stec_a)->last->content)
+			   	(*stec_a)->content > (*stec_a)->before->content)
 			{
 				*stec_a = (*stec_a)->next;
 				write(1, "ra\n", 3);

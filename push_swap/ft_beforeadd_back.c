@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 14:36:42 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/19 23:46:18 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/10/12 14:21:05 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/10/20 01:59:35 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_beforeadd_back(t_list **lst, t_list *new)
 {
-	while (lst)
+	t_list	*before_element;
+
+	if (!*lst)
 	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
+		*lst = new;
+		return ;
 	}
-	return (lst);
+
+	if((*lst)->before) 
+	{
+		(*lst)->before->next = new;
+		(*lst)->before->next->next = *lst;	
+		(*lst)->before->next->before = (*lst)->before;
+		(*lst)->before = new;
+	}
+		else
+	{
+		(*lst)->next = new;
+		(*lst)->next->next = *lst;
+		(*lst)->before = new;
+		(*lst)->before->before = *lst;
+	}
+
 }

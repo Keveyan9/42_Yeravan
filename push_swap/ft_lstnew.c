@@ -23,6 +23,6 @@ t_list	*ft_lstnew(int content)
 	}
 	new_node->content = content;
 	new_node->next = NULL;
-	new_node->last = NULL;
+	new_node->before = NULL;
 	return (new_node);
 }

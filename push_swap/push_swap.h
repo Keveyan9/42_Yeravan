@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:56 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/20 15:03:00 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/22 23:08:48 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -31,8 +31,17 @@ typedef struct s_list
 	struct s_list	*before;
 }					t_list;
 
+typedef struct FERST_VARIABL
+{
+	t_list *head;
+	int  flag_duing;
+	int	flag_position;
+	int flag_ra;
+
+}			ferst_variabl;
+
 void		secend_sort(t_list **stec_a, t_list **stec_b, int *grup_qaunt,int caunt );
-void		ferst_sorting(t_list **stec_a);
+void		ferst_sorting(t_list **stec_a, int count);
 void		speshl_qeys(int count, t_list **stec_a, t_list **stec_b);
 void		swap(t_list **swap_argument);
 void		push(t_list **take_argument, t_list **put_argument);

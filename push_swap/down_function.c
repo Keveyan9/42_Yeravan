@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:48:23 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 02:24:17 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:33:10 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -16,23 +16,24 @@ void	last_down(t_list **take, t_list **put, int *count, char *c)
 	if (*count > 1 && ((*take)->content < (*put)->content
 			|| (*take)->next->content < (*put)->content))
 	{
-		c[2] = '1';
 		if ((*take)->content > (*take)->next->content)
 		{
 			(*count)--;
 			push(take, put);
-			write(1, "\np", 2);
+			write(1, "p", 1);
 			write(1, &c[1], 1);
+			write(1, "\n", 1);
 		}
 		else
 		{
 			(*count)--;
 			*take = (*take)->next;
 			push(take, put);
-			write(1, "\nr", 2);
+			write(1, "r", 1);
 			write(1, &c[0], 1);
 			write(1, "\np", 2);
 			write(1, &c[1], 1);
+			write(1, "\n", 1);
 		}
 	}
 	if (*take && (*take)->content < (*put)->content)

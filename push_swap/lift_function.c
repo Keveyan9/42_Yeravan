@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:48:23 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 03:59:38 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:35:50 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -21,27 +21,31 @@ void	last_lift(t_list **take, t_list **put, int *count, char *c)
 		{
 			(*count)--;
 			push(take, put);
-			write(1, "\np", 2);
+			write(1, "p", 1);
 			write(1, &c[1], 1);
+			write(1, "\n", 1);
 		}
 		else
 		{
 			(*count)--;
 			*take = (*take)->next;
 			push(take, put);
-			write(1, "\nr", 2);
+			write(1, "r", 1);
 			write(1, &c[0], 1);
 			write(1, "\np", 2);
 			write(1, &c[1], 1);
+			write(1, "\n", 1);
 		}
 	}
 	if (*take && (*take)->content > (*put)->content)
+	{
 		finish_string(take, put, count, c);
+		c[2] ='1';
+	}
 }
-
 int	siqel_lift_valid(t_list **take, t_list **put, int*count)
 {	
-	if (*count > 3)
+	if (*count > 2)
 	{
 		if ((*take)->content > (*put)->content)
 			return (1);

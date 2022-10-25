@@ -6,33 +6,36 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:45:16 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 03:58:09 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:37:07 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 static void	put_secend_r(char *c)
 {
-	write(1, "\nr", 2);
+	write(1, "r", 1);
 	write(1, &c[0], 1);
 	write(1, "\np", 2);
 	write(1, &c[1], 1);
+	write(1, "\n", 1);
 }
 
 static void	put_secend_rr(char *c)
 {
-	write(1, "\ns", 2);
+	write(1, "s", 1);
 	write(1, &c[0], 1);
 	write(1, "\np", 2);
 	write(1, &c[1], 1);
+	write(1, "\n", 1);
 }
 
 static void	put_last(char *c)
 {
-	write (1, "\nrr", 3);
+	write (1, "rr", 2);
 	write (1, &c[0], 1);
 	write (1, "\np", 2);
 	write (1, &c[1], 1);
+	write(1, "\n", 1);
 }
 
 static void	efection_secend_push(t_list **take, t_list **put, char *c)
@@ -53,26 +56,25 @@ static void	efection_secend_push(t_list **take, t_list **put, char *c)
 
 void	lift(t_list **take, t_list **put, int *count, char *c)
 {
-	printf("---%d--\n",*count);
 	while (siqel_lift_valid(take, put, count))
 	{
 		
-		printf("$$$$$$$$$$$o- %d  --$$$$$\n",*count);
+		c[2] = '1';
 		if (lift_valid_ferst(take, put))
 		{
 			push(take, put);
-			write(1, "\np", 2);
+			write(1, "p", 1);
 			write(1, &c[1], 1);
+			write(1, "\n", 1);
 		}	
 		else if (lift_valid_secend(take, put))
 			efection_secend_push(take, put, c);
 		else
-		{
-			*take = (*take)->before;
+		{			*take = (*take)->before;
 			push(take, put);
 			put_last(c);
 		}
 		(*count)--;
 	}
-	last_down(take, put, count, c);
+	last_lift(take, put, count, c);
 }

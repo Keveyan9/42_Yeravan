@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 22:25:42 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/24 23:47:45 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:31:03 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -19,13 +19,13 @@ static void	ferst_down_efectiv_rb(t_list **take, t_list **put, int *count)
 	{
 		*take = (*take)->next;
 		push(take, put);
-		write(1, "ra\npb", 5);
+		write(1, "ra\npb\n", 6);
 	}
 	else
 	{
 		swap(take);
 		push(take, put);
-		write(1, "sa\npb", 5);
+		write(1, "sa\npb\n", 6);
 	}
 }	
 
@@ -35,7 +35,7 @@ void	ferst_down(t_list **take, t_list **put, int *count)
 			&& (*take)->content > (*take)->before->content)
 	{
 		push(take, put);
-		write(1, "pb", 2);
+		write(1, "pb\n", 3);
 	}	
 	else if ((*take)->next->content > (*take)->before->content)
 		ferst_down_efectiv_rb(take, put, count);
@@ -43,7 +43,7 @@ void	ferst_down(t_list **take, t_list **put, int *count)
 	{
 		*take = (*take)->before;
 		push(take, put);
-		write(1, "rra\npb", 6);
+		write(1, "rra\npb\n", 7);
 	}
 	(*count)--;
 }

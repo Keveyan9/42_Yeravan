@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:56 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 03:15:37 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:07:17 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -31,8 +31,6 @@ typedef struct s_list
 	struct s_list	*before;
 }					t_list;
 
-
-
 void 		last_down(t_list **take, t_list ** put, int *count, char *c);
 int			siqel_down_valid(t_list **take, t_list **put, int*count);
 int			down_valid_ferst(t_list **take, t_list **put );
@@ -53,12 +51,13 @@ void		lift(t_list **take, t_list **put, int *count, char *c);
 
 
 void		ferst_down(t_list **take, t_list **put, int *count);
-void		secend_sort(t_list **stec_a, t_list **stec_b, int *grup_qaunt,int caunt );
-void		ferst_sorting(t_list **stec_a, int count);
+
+void		ferst_lift(t_list **take, t_list **put, int *count);
 void		speshl_qeys(int count, t_list **stec_a, t_list **stec_b);
 void		swap(t_list **swap_argument);
 void		push(t_list **take_argument, t_list **put_argument);
 void		algoritm(int count, t_list **stec_a, t_list **stec_b );
+
 void		pour(long int	*input, int int_aray_len, t_list **pour_stec);
 void		ft_beforeadd_back(t_list **lst, t_list *new);
 t_list		*ft_lstnew(int content);

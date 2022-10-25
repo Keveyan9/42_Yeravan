@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:34 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/20 00:51:41 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:18:08 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ int	main(int argc, char **argv )
 	
 	stec_a = NULL;
 	stec_b = NULL;
-	if (argc > 2)
+	if (argc > 1)
 	{
 		var.input_ful = ful_join(argv);
 		var.input_cuts = ft_split(var.input_ful, ' ');

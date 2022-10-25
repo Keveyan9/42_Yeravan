@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:56 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/22 23:08:48 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/25 03:15:37 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -31,15 +31,28 @@ typedef struct s_list
 	struct s_list	*before;
 }					t_list;
 
-typedef struct FERST_VARIABL
-{
-	t_list *head;
-	int  flag_duing;
-	int	flag_position;
-	int flag_ra;
 
-}			ferst_variabl;
 
+void 		last_down(t_list **take, t_list ** put, int *count, char *c);
+int			siqel_down_valid(t_list **take, t_list **put, int*count);
+int			down_valid_ferst(t_list **take, t_list **put );
+int 		down_valid_secend(t_list **take, t_list **put);
+int 		rb_down_efectiv(t_list **take,t_list **put);
+void		finish_string(t_list **take, t_list **put, int *count, char *c);
+void		down(t_list **take, t_list **put, int *count, char *c);
+
+
+void 		last_lift(t_list **take, t_list ** put, int *count, char *c);
+int			siqel_lift_valid(t_list **take, t_list **put, int*count);
+int			lift_valid_ferst(t_list **take, t_list **put );
+int 		lift_valid_secend(t_list **take, t_list **put);
+int 		rb_lift_efectiv(t_list **take,t_list **put);
+void		lift(t_list **take, t_list **put, int *count, char *c);
+
+
+
+
+void		ferst_down(t_list **take, t_list **put, int *count);
 void		secend_sort(t_list **stec_a, t_list **stec_b, int *grup_qaunt,int caunt );
 void		ferst_sorting(t_list **stec_a, int count);
 void		speshl_qeys(int count, t_list **stec_a, t_list **stec_b);

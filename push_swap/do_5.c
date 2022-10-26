@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_string.c                                    :+:      :+:    :+:   */
+/*   do_5.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 01:30:55 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 23:43:19 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/10/26 15:10:38 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/10/26 16:07:11 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	finish_string(t_list **take, t_list **put, int *count, char *c)
+static void	min_lift(t_list **stec_a, t_list  **stec_b, int *count)
 {
-	(*count)--;
-	(*put)->before->next = *take;
-	(*take)->before = (*put)->before;
-	(*put)->before = *take;
-	(*take)->next = *put;
-	*put = *take;
-	*take = NULL;
-	write(1, "p", 2);
-	write(1, &c[1], 1);
-	write(1, "\n", 1);
+
 }
+
+void	do_5(int count, t_list **stec_a, t_list **stec_b)
+{
+	while (count > 3 )
+	{
+		min_lift(stec_a, stec_b,&count);
+	}
+		printf("%d\n",(*stec_a)->content); 
+	printf("%d\n",(*stec_a)->next->content); 
+}
+
+

@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:56 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 15:07:17 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:52:36 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -50,6 +50,7 @@ void		lift(t_list **take, t_list **put, int *count, char *c);
 
 
 
+void		do_5(int count, t_list **stec_a, t_list **stec_b);
 void		ferst_down(t_list **take, t_list **put, int *count);
 
 void		ferst_lift(t_list **take, t_list **put, int *count);

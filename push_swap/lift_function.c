@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 01:48:23 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 17:35:50 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/26 02:15:12 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -17,7 +17,8 @@ void	last_lift(t_list **take, t_list **put, int *count, char *c)
 			|| (*take)->next->content > (*put)->content))
 	{
 		c[2] = '1';
-		if ((*take)->content < (*take)->next->content)
+		if ((*take)->content < (*take)->next->content \
+				||((*take)->next->content < (*put)->content))
 		{
 			(*count)--;
 			push(take, put);
@@ -43,6 +44,7 @@ void	last_lift(t_list **take, t_list **put, int *count, char *c)
 		c[2] ='1';
 	}
 }
+
 int	siqel_lift_valid(t_list **take, t_list **put, int*count)
 {	
 	if (*count > 2)

@@ -6,10 +6,24 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:34 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/25 18:18:08 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:39:08 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+
+static int valid_start(long int *c, int count)
+{
+	int t;
+
+	t = 0;
+	while(count--)
+	{
+		if( c[t + 1] && c[t] > c[t + 1])
+			return(1);
+		t++;
+	}
+	exit(0);
+}
 
 int	main(int argc, char **argv )
 
@@ -25,16 +39,21 @@ int	main(int argc, char **argv )
 		var.input_ful = ful_join(argv);
 		var.input_cuts = ft_split(var.input_ful, ' ');
 		var.wstrlen = ft_2strlen(var.input_cuts);
-		var.input_s = (long int *) malloc(var.wstrlen * sizeof(long int));
-		parsing(var.input_s, var.wstrlen, var.input_cuts);
-		error_max_min_dupliqet(var.input_s, var.wstrlen);
-		pour(var.input_s, var.wstrlen, &stec_a);
-		free(var.input_s);
-		algoritm(var.wstrlen, &stec_a, &stec_b);
+		if(var.wstrlen > 1)
+		{
+			var.input_s = (long int *) malloc(var.wstrlen * sizeof(long int));
+			parsing(var.input_s, var.wstrlen, var.input_cuts);
+			error_max_min_dupliqet(var.input_s, var.wstrlen);
+			pour(var.input_s, var.wstrlen, &stec_a);
+			if(valid_start(var.input_s, var.wstrlen) )
+			{
+				free(var.input_s);
+				if(var.wstrlen > 5) 
+					algoritm(var.wstrlen, &stec_a, &stec_b);
+				else
+					do_5(var.wstrlen, &stec_a, &stec_b);
+			}
+		}
 	}
-	else if (argc == 2)
-		return (0);
-	else
-		write(1, "is litl argument\n", 17);
 	return (0);
 }

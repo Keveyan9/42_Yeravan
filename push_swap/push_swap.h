@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:56 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/26 15:52:36 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:14:01 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -50,10 +50,10 @@ void		lift(t_list **take, t_list **put, int *count, char *c);
 
 
 
-void		do_5(int count, t_list **stec_a, t_list **stec_b);
-void		ferst_down(t_list **take, t_list **put, int *count);
+void		do_6(int count, t_list **stec_a, t_list **stec_b);
+void		ferst_down(t_list **take, t_list **put, int *count, char *a);
+void		ferst_lift_5(t_list **take, t_list **put, int *count);
 
-void		ferst_lift(t_list **take, t_list **put, int *count);
 void		speshl_qeys(int count, t_list **stec_a, t_list **stec_b);
 void		swap(t_list **swap_argument);
 void		push(t_list **take_argument, t_list **put_argument);

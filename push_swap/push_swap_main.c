@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:34 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/26 15:39:08 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:17:48 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -16,7 +16,7 @@ static int valid_start(long int *c, int count)
 	int t;
 
 	t = 0;
-	while(count--)
+	while(t < count - 1)
 	{
 		if( c[t + 1] && c[t] > c[t + 1])
 			return(1);
@@ -51,7 +51,7 @@ int	main(int argc, char **argv )
 				if(var.wstrlen > 5) 
 					algoritm(var.wstrlen, &stec_a, &stec_b);
 				else
-					do_5(var.wstrlen, &stec_a, &stec_b);
+					do_6(var.wstrlen, &stec_a, &stec_b);
 			}
 		}
 	}

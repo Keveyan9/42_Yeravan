@@ -6,59 +6,44 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 22:25:42 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/11/03 01:19:08 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:16:59 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static void	ferst_down_efectiv_rb(t_list **take, t_list **put, int *count, char *c)
+static void	ferst_lift_efectiv_rb(t_list **take, t_list **put, int *count)
 {
-	if ((*take)->next->next->content < (*take)->next->content \
-			&& (*take)->next->next->content > (*take)->content \
-			&& (*take)->next->next->content > (*take)->before->content)
+	if ((*take)->next->next->content > (*take)->next->content \
+			&& (*take)->next->next->content < (*take)->content \
+			&& (*take)->next->next->content < (*take)->before->content)
 	{
 		*take = (*take)->next;
 		push(take, put);
-		write(1, "r", 1);
-		write(1, &c[0], 1);
-		write(1 ,"\np", 2);
-		write(1, &c[1], 1);
-		write(1,"\n", 1);
+		write(1, "ra\npb\n", 6);
 	}
 	else
 	{
 		swap(take);
 		push(take, put);
-		write(1, "s", 1);
-		write(1, &c[0], 1);
-		write(1 ,"\np", 2);
-		write(1, &c[1], 1);
-		write(1,"\n", 1);
+		write(1, "sa\npb\n", 6);
 	}
 }	
 
-void	ferst_down(t_list **take, t_list **put, int *count, char *c)
+void	ferst_lift_5(t_list **take, t_list **put, int *count)
 {
-	if ((*take)->content > (*take)->next->content \
-			&& (*take)->content > (*take)->before->content)
+	if ((*take)->content < (*take)->next->content \
+			&& (*take)->content < (*take)->before->content)
 	{
 		push(take, put);
-		write(1, "p", 1);
-		write(1, &c[1], 1);
-		write(1, "\n", 1);
+		write(1, "pb\n", 3);
 	}	
-	else if ((*take)->next->content > (*take)->before->content)
-		ferst_down_efectiv_rb(take, put, count, c);
+	else if ((*take)->next->content < (*take)->before->content)
+		ferst_lift_efectiv_rb(take, put, count);
 	else
 	{
 		*take = (*take)->before;
 		push(take, put);
-		
-		write(1, "rr", 2);
-		write(1, &c[0], 1);
-		write(1 ,"\np", 2);
-		write(1, &c[1], 1);
-		write(1,"\n", 1);
+		write(1, "rra\npb\n",7);
 	}
 	(*count)--;
 }

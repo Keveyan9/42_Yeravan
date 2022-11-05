@@ -6,23 +6,24 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 19:30:24 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/09 22:59:15 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/10/08 19:38:18 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "pipex.h"
 
-void	chekin_file( char **argv, int argc, t_child *var)
+void	chekin_file(char **fp, int argc, int *i_fd, int *o_fd )
 {
-	var->i_fd = open (argv[1], O_RDWR);
-	var->o_fd = open (argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
-	if (var->i_fd < 0)
+	*i_fd = open (fp[1], O_RDWR);
+	if (*i_fd < 0)
 	{
-		perror (argv[1]);
+		perror ("not  input file ");
 		exit (0);
 	}
-	if (var->o_fd < 0)
+	*o_fd = open (fp[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (*o_fd < 0)
 	{
-		perror(argv[argc - 1]);
+		perror ("out file error");
 		exit (0);
 	}
 }

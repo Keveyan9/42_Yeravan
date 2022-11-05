@@ -6,14 +6,14 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 15:32:03 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/10/23 22:41:28 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:35:50 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 void	push(t_list **take_argument, t_list **put_argument)
 {
-	t_list *head ;
+	t_list	*head ;
 
 	head = (*take_argument)->next;
 	if (*put_argument && *take_argument)

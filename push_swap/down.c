@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:45:16 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/11/03 00:57:04 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:25:34 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -40,7 +40,7 @@ static void	put_last(char *c)
 
 static void	efection_secend_push(t_list **take, t_list **put, char *c)
 {
-	if (rb_down_efectiv(take, put))
+	if (rb_down_efectiv(take))
 	{
 		*take = (*take)->next;
 		push(take, put);
@@ -53,6 +53,7 @@ static void	efection_secend_push(t_list **take, t_list **put, char *c)
 		put_secend_rr(c);
 	}	
 }
+
 void	down(t_list **take, t_list **put, int *count, char *c)
 {
 	while (siqel_down_valid(take, put, count))
@@ -72,6 +73,7 @@ void	down(t_list **take, t_list **put, int *count, char *c)
 			push(take, put);
 			put_last(c);
 		}
-		(*count)--;	}
+		(*count)--;
+	}
 	last_down(take, put, count, c);
 }

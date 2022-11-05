@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:05:56 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/11/03 14:14:01 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/11/05 19:12:44 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -31,34 +31,27 @@ typedef struct s_list
 	struct s_list	*before;
 }					t_list;
 
-void 		last_down(t_list **take, t_list ** put, int *count, char *c);
+void		finish_string_5(t_list **take, t_list **put);
+void		last_down(t_list **take, t_list **put, int *count, char *c);
 int			siqel_down_valid(t_list **take, t_list **put, int*count);
 int			down_valid_ferst(t_list **take, t_list **put );
-int 		down_valid_secend(t_list **take, t_list **put);
-int 		rb_down_efectiv(t_list **take,t_list **put);
+int			down_valid_secend(t_list **take, t_list **put);
+int			rb_down_efectiv(t_list **take);
 void		finish_string(t_list **take, t_list **put, int *count, char *c);
 void		down(t_list **take, t_list **put, int *count, char *c);
-
-
-void 		last_lift(t_list **take, t_list ** put, int *count, char *c);
+void		last_lift(t_list **take, t_list **put, int *count, char *c);
 int			siqel_lift_valid(t_list **take, t_list **put, int*count);
 int			lift_valid_ferst(t_list **take, t_list **put );
-int 		lift_valid_secend(t_list **take, t_list **put);
-int 		rb_lift_efectiv(t_list **take,t_list **put);
+int			lift_valid_secend(t_list **take, t_list **put);
+int			rb_lift_efectiv(t_list **take);
 void		lift(t_list **take, t_list **put, int *count, char *c);
-
-
-
-
-void		do_6(int count, t_list **stec_a, t_list **stec_b);
+void		do_5(int count, t_list **stec_a, t_list **stec_b);
 void		ferst_down(t_list **take, t_list **put, int *count, char *a);
 void		ferst_lift_5(t_list **take, t_list **put, int *count);
-
 void		speshl_qeys(int count, t_list **stec_a, t_list **stec_b);
 void		swap(t_list **swap_argument);
 void		push(t_list **take_argument, t_list **put_argument);
 void		algoritm(int count, t_list **stec_a, t_list **stec_b );
-
 void		pour(long int	*input, int int_aray_len, t_list **pour_stec);
 void		ft_beforeadd_back(t_list **lst, t_list *new);
 t_list		*ft_lstnew(int content);

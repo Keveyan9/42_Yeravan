@@ -9,7 +9,7 @@
 /*   Updated: 2022/11/05 17:27:48 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
 static void	chek_plus_minus( const char **str, int *minus_counter)
 {

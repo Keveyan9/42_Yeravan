@@ -24,31 +24,55 @@ int	main(void)
 	t_data	img;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1000, 1000, "Hello world!");
-	img.img = mlx_new_image(mlx, 1000, 1000);
+	mlx_win = mlx_new_window(mlx, 1000, 1001, "Hello world!");
+	img.img = mlx_new_image(mlx, 1000, 1001);
 
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 
 
-	float  x = 1;
-	float  y = 500;
-	float d;
-	float r;
-	d = 0.4;
-	r = 0.1;
+	float  x_zum = 500;
+	float  y_zum = 500;
+	float x = -500;
+	float y = -500;
+	float count_x = 0;
+	float count_y = 0;
+	float caficent = 250000;
+	int ciqel = 3;
+	int ciqel_count = 0;
+	float old_x = 0;
 
 	int c = 1;
-	while (x < 1000 && y > 0 )
+	while (x < 500)
 	{	
-		my_mlx_pixel_put(&img, x, y , 0x00FF0000);
-	
-		d = d*r*(1-d);
-		y = 500 - (d*100);
-		x ++ ;
-		r = r + 0.1;
+		y = -500;
+		while( y < 500)
+		{
+			count_y = 0;
+			x = 1;
+			y = 1;
+			count_x = 0;
+			ciqel_count = 0;
+			while((count_x*count_x) + ( count_y*count_y) < caficent && ciqel_count < ciqel)
+			{
+				old_x = count_x;
+				ciqel_count++;
+				count_x = ((count_x*count_x) - (count_y*count_y)) + x;
+		//		printf("count_x == %f\n", count_x);
+				count_y = (2*old_x*count_y) + y;
+		//		printf("count_y == %f\n", count_y);
+			}		
+			if(count_x*count_x+count_y*count_y)
+			{
+				my_mlx_pixel_put(&img, x + x_zum,  y_zum - y , 0x00FF0000);
+			}
+	//		else
+	//			my_mlx_pixel_put(&img, x + x_zum, y + y_zum, 0xFF0000 * ciqel_count);
+			y++;
+		}
+		x++;
 	}
 
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
-}
+	}

@@ -31,14 +31,14 @@ int	main(void)
 								&img.endian);
 
 
-	float  x_zum = 500;
+	float  x_zum = 700;
 	float  y_zum = 500;
 	float x = -500;
 	float y = -500;
 	float count_x = 0;
 	float count_y = 0;
-	float caficent = 250000;
-	int ciqel = 3;
+	float caficent = 4;
+	int ciqel = 250;
 	int ciqel_count = 0;
 	float old_x = 0;
 
@@ -49,22 +49,24 @@ int	main(void)
 		while( y < 500)
 		{
 			count_y = 0;
-			x = 1;
-			y = 1;
 			count_x = 0;
 			ciqel_count = 0;
 			while((count_x*count_x) + ( count_y*count_y) < caficent && ciqel_count < ciqel)
 			{
 				old_x = count_x;
 				ciqel_count++;
-				count_x = ((count_x*count_x) - (count_y*count_y)) + x;
-		//		printf("count_x == %f\n", count_x);
-				count_y = (2*old_x*count_y) + y;
-		//		printf("count_y == %f\n", count_y);
+				count_x = ((count_x*count_x) - (count_y*count_y)) + x/500;
+				count_y = (2*old_x*count_y) + y/500;
+				
 			}		
-			if(count_x*count_x+count_y*count_y)
+			//	printf("count_x == %f", x);
+			//	printf(" count_y == %f", y);
+			//	printf(" set %f ",count_x*count_x + count_y*count_y);
+			//	printf(" ciqel __%d\n",ciqel_counto);g
+
+			if(count_x*count_x+count_y*count_y > caficent)
 			{
-				my_mlx_pixel_put(&img, x + x_zum,  y_zum - y , 0x00FF0000);
+				my_mlx_pixel_put(&img, x + x_zum,  y_zum - y , 0x00FF00 *ciqel_count);
 			}
 	//		else
 	//			my_mlx_pixel_put(&img, x + x_zum, y + y_zum, 0xFF0000 * ciqel_count);

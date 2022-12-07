@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:11:07 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/11/25 14:01:24 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:29:09 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <mlx.h>
@@ -15,13 +15,21 @@
 int	main(int argc, char **argv)
 {
 	int xy[2];
+	t_struct_mlx win_var;
 
-	xy[0] = 1000;
-	xy[1] =1000;
+	xy[0] = 1500;
+	xy[1] = 1000;
 	if (argc > 1)
 	{
 		if (!ft_strncmp("Mandelbrot", argv[1], ft_strlen(argv[1])) && !argv[2])
-			mandelbrot(argv[1], xy);
+		{
+			open_mlx(argv[1], xy , &win_var);
+			mandelbrot(&win_var, xy);
+
+			mlx_mouse_hook(win_var.window_name, key_hook, &vars);
+			mlx_key_hook(win_var.window_name, key_hook, &vars);
+			mlx_loop(win_var.mlx);
+		}
 		else if (!ft_strncmp("Julia", argv[1], ft_strlen(argv[1])))
 		{
 			if (argv[2] && !argv[3])

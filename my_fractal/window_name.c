@@ -6,12 +6,12 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:51:32 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/11/25 14:06:34 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/12/08 20:36:08 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractal.h"
 
-char	*window_name_size(int *xy, char *fractal_name)
+char	*window_name_size(t_struct_mlx_mandelbrot *win_var, char *fractal_name)
 {
 	char	*window_name_size;
 	char	*x;
@@ -19,8 +19,8 @@ char	*window_name_size(int *xy, char *fractal_name)
 	char	*name_prabel;
 	char	*xy_sinvel;
 
-	x = ft_itoa(xy[0]);
-	y = ft_itoa(xy[1]);
+	x = ft_itoa(win_var->xsize);
+	y = ft_itoa(win_var->ysize);
 	name_prabel = ft_strjoin(fractal_name, " __ ");
 	window_name_size = ft_strjoin(x, " * ");
 	xy_sinvel = ft_strjoin(window_name_size, y);

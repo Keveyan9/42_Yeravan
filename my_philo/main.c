@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 19:41:43 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/12/16 15:33:56 by skeveyan         ###   ########.fr       */
+/*   Created: 2022/12/28 18:44:53 by skeveyan          #+#    #+#             */
+/*   Updated: 2022/12/30 15:00:39 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "philo.h"
 
-void	ft_print_hex(int *len, unsigned int hexcalcul, char *base)
-{
-	if (hexcalcul >= 16)
-		ft_print_hex(len, hexcalcul / 16, base);
-	write(1, &base[hexcalcul % 16], 1);
-	(*len)++;
+int	main(int argc, char **argv)
+{	
+	t_input_argument	input;
+	t_pthread_argument	pthread;
+	
+	input.ok_time = 0;
+	if (argc == 5 || argc == 6)
+	{
+		if(chek_argument(argv,&input) == 1)
+		{
+			printf("isargument");
+			return(0);
+		}
+		creat_philo(&input,&pthread);
+
+	}
+	else
+		printf("is littl or more  argumnet");
+	return(0);
 }
+

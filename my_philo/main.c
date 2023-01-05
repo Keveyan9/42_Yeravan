@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:44:53 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/12/30 15:00:39 by skeveyan         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:40:11 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -24,8 +24,10 @@ int	main(int argc, char **argv)
 			printf("isargument");
 			return(0);
 		}
-		creat_philo(&input,&pthread);
-
+		if (creat_philo(&input,&pthread))
+			return(0);
+//		if(chek_distroy(&pthread))
+//			return(0);
 	}
 	else
 		printf("is littl or more  argumnet");

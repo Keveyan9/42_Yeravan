@@ -6,14 +6,14 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:58:33 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/12/31 00:21:35 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:13:40 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
 
 int	chek_argument( char **argv, t_input_argument *input)
 {
-	input->philo = ft_atoi(argv[1]) - 1;
+	input->philo = ft_atoi(argv[1]);
 	input->die = ft_atoi(argv[2]);
 	input->eat = ft_atoi(argv[3]);
 	input->sleep = ft_atoi(argv[4]);

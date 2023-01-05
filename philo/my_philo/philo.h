@@ -19,6 +19,7 @@ typedef struct T_PTHREAD_ARGUMENT
 {
 	pthread_mutex_t *fork;
 	pthread_t 		*thread;
+	int             is_dead;
 	unsigned	int	number;
 	unsigned	int	ms;
 	unsigned	int *starteat;

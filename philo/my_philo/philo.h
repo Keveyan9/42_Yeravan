@@ -8,32 +8,37 @@
 
 typedef struct T_INPUT_ARGUMENT
 {	
-	 int	philo;
-	 int	die;
-	 int	eat;
-	 int	sleep;
-	 int	ok_time;
+	 int				philo;
+	 int				die;
+	 int				eat;
+	 int				sleep;
+	 int				ok_siqel;
+	 int				print_lock;
+	 int				tred_finish;
+	 pthread_mutex_t	*fork;
 }				t_input_argument;
 
-typedef struct T_PTHREAD_ARGUMENT
+typedef struct	PHILO_PARAMETR
 {
-	pthread_mutex_t *fork;
-	pthread_t 		*thread;
-	int             is_dead;
-	unsigned	int	number;
-	unsigned	int	ms;
-	unsigned	int *starteat;
-	unsigned	int *startsleep;
-	unsigned	int *startthink;
-	t_input_argument *input;
-}	t_pthread_argument;
+	t_input_argument	*input;
+	pthread_t			thread;
+	unsigned	int		tred_finish_id;
+	unsigned	int		number;
+	unsigned	int		starteat;
+	unsigned	int		startsleep;
+	unsigned	int		startthink;
+}					philo_parametr;
 
-unsigned int  timer();
-void put_forks(t_pthread_argument *pthread, int n);
-void take_forks(t_pthread_argument *pthread,int n);
+
 long int	ft_atoi(const char *str);
 int	chek_argument( char **argv, t_input_argument *input);
-int creat_philo(t_input_argument *input,t_pthread_argument *pthread);
-int chek_distroy(t_pthread_argument *pthread);
+int creat_philo(philo_parametr *philo_a,t_input_argument *input);
+void take_forks(philo_parametr *philos);
+void put_forks(philo_parametr *philos);
+void chek_distroy(philo_parametr *philo_a, t_input_argument *input);
+unsigned int  timer();
+void *chek(void *arg);
+
+void print_s(char *s, philo_parametr *philos);
 #endif
 

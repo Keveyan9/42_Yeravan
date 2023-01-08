@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:58:33 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/04 11:13:40 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/08 15:57:17 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -19,8 +19,8 @@ int	chek_argument( char **argv, t_input_argument *input)
 	input->sleep = ft_atoi(argv[4]);
 	if (argv[5])
 	{
-		input->ok_time = ft_atoi(argv[5]);
-		if (input->ok_time < 0)
+		input->ok_siqel = ft_atoi(argv[5]);
+		if (input->ok_siqel < 0)
 			return (0);
 	}
 	if (0 > input->philo)

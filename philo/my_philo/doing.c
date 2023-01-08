@@ -6,72 +6,47 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 00:14:17 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/05 17:34:39 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:23:16 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"philo.h"
 
-int chek_distroy(t_pthread_argument *pthread)
+void print_s(char *s, philo_parametr *philos)
 {
-	int n;
-
-	n = 0;
-	while(1)
-	{
-		while( n < pthread->input->philo )
-		{
-			if(timer() - pthread->input->die < pthread->startsleep[n] ) 
-			{
-				printf("%u\n", timer() - pthread->starteat[n]); 
-				printf("%u in_ms is died %u\n",timer(),n + 1);
-			n = 0;
-			while(0 )
-			{
-				if(pthread_mutex_lock(&pthread->fork[n]))
-					return(2);
-				if(pthread_mutex_destroy(&(pthread->fork[n])))
-					return(1);
-				n++;
-			}
-			return(1);
-			}
-		n++;
-		}
-		n = 0;
-	}
-	return(0);
+	if(philos->input->print_lock)
+		printf("%u _in_ms %u %s\n",timer(),philos->number + 1, s);
 }
 
-void take_forks(t_pthread_argument *pthread,int n)
+void take_forks(philo_parametr *philos)
 {
 
-		if(n  == pthread->input->philo - 1)
+		if( philos->number  == philos->input->philo - 1)
 		{
-			pthread_mutex_lock(&pthread->fork[n]);
-			printf("%u _in_ms %u has taken a left fork\n",timer(),n + 1);
-			pthread_mutex_lock(&pthread->fork[0]);
-			printf("%u _in_ms %u has taken a right fork\n",timer(),n + 1);
+			pthread_mutex_lock(&(philos->input->fork[philos->number]));
+			print_s("has taken a left fork",philos);
+			pthread_mutex_lock(&(philos->input->fork[0]));
+			print_s("has taken a right fork",philos);
 		}
 		else
 		{
-			pthread_mutex_lock(&pthread->fork[n ]);
-			printf("%u _in_ms %u has taken a left fork\n",timer(),n + 1);
-			pthread_mutex_lock(&pthread->fork[n + 1]);
-			printf("%u _in_ms %u has taken a right fork\n",timer(),n + 1);
+
+			pthread_mutex_lock(&(philos->input->fork[philos->number]));
+			print_s("has taken a left fork",philos);
+			pthread_mutex_lock(&(philos->input->fork[philos->number + 1]));
+			print_s("has taken a right fork",philos);
 		}
 }
 
-void put_forks(t_pthread_argument *pthread, int n)
+void put_forks(philo_parametr *philos)
 {
-
-	if(n  == pthread->input->philo - 1)
-	{
-		pthread_mutex_unlock(&pthread->fork[n]);
-		pthread_mutex_unlock(&pthread->fork[0]);
-	}
-	else
-	{
-		pthread_mutex_unlock(&pthread->fork[n]);
-		pthread_mutex_unlock(&pthread->fork[n + 1]);
-	}
+		if(philos->number  == philos->input->philo - 1)
+		{
+			pthread_mutex_unlock(&(philos->input->fork[philos->number]));
+			pthread_mutex_unlock(&(philos->input->fork[0]));
+		}
+		else
+		{
+			pthread_mutex_unlock(&(philos->input->fork[philos->number]));
+			pthread_mutex_unlock(&(philos->input->fork[philos->number + 1]));
+		}
 }

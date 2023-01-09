@@ -6,41 +6,47 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:14:33 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/09 01:33:51 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/10 01:36:07 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
 
-
-void *chek(void *arg)
+int chek_distroy_eats_moment(philo_parametr *philos)
 {
-
-	philo_parametr *philo_a;
-	int n;
-	
-	n = 0;
-	philo_a = arg;
-	while(1)
+	while(timer() - philos->starteat <= philos->input->eat)
 	{
-		if(philo_a[n].startsleep > 0)
+		if(philos->startsleep > 0)
 		{
-			//if(timer() - philo_a[n].startsleep > philo_a[n].input->die)
-//			break;
+			if(timer()  - philos->startsleep > philos->input->die)
+			{
+				print_s(" die is ___________-eat",philos);
+				philos->input->print_lock = 0;
+				pthread_mutex_lock(&(philos->input->m_print_lock));
+				usleep(10);
+				pthread_mutex_unlock(&(philos->input->m_print_lock));
+				return(1);
+			}
 		}
-		n++;
-		if(n == philo_a[n].input->philo)
-			n = 0;
 	}
-	return(NULL);
+	return(0);
 }
 
-void chek_distroy(philo_parametr *philo_a, t_input_argument *input)
+int chek_distroy_sleep_moment(philo_parametr *philos)
 {
-	pthread_t chek_thred;
-
-	if(pthread_create(&chek_thred,NULL,&chek,philo_a))
+	while(timer() - philos->startsleep <= philos->input->sleep)
 	{
-		printf("chek tread error\n");
+		if(philos->startsleep > 0)
+		{
+			if(timer()  - philos->startsleep > philos->input->die)
+			{
+				print_s(" die is ______________sleep",philos);
+				philos->input->print_lock = 0;
+				pthread_mutex_lock(&(philos->input->m_print_lock));
+				usleep(10);
+				pthread_mutex_unlock(&(philos->input->m_print_lock));
+				return(1);
+			}
+		}
 	}
-	pthread_join(chek_thred,NULL);
+	return(0);
 }

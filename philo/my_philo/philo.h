@@ -13,9 +13,10 @@ typedef struct T_INPUT_ARGUMENT
 	 int				eat;
 	 int				sleep;
 	 int				ok_siqel;
-	 int				print_lock;
+	 int			print_lock;
 	 int				tred_finish;
 	 pthread_mutex_t	*fork;
+	 pthread_mutex_t	m_print_lock;
 }				t_input_argument;
 
 typedef struct	PHILO_PARAMETR
@@ -35,7 +36,8 @@ int	chek_argument( char **argv, t_input_argument *input);
 int creat_philo(philo_parametr *philo_a,t_input_argument *input);
 void take_forks(philo_parametr *philos);
 void put_forks(philo_parametr *philos);
-void chek_distroy(philo_parametr *philo_a, t_input_argument *input);
+int chek_distroy_eats_moment(philo_parametr *philos);
+int chek_distroy_sleep_moment(philo_parametr *philos);
 unsigned int  timer();
 void *chek(void *arg);
 

@@ -6,19 +6,24 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 00:14:17 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/08 23:23:16 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/10 01:55:45 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"philo.h"
 
 void print_s(char *s, philo_parametr *philos)
 {
+	
+	pthread_mutex_lock(&(philos->input->m_print_lock));
+	usleep(20);
+	pthread_mutex_unlock(&(philos->input->m_print_lock));
 	if(philos->input->print_lock)
 		printf("%u _in_ms %u %s\n",timer(),philos->number + 1, s);
 }
 
 void take_forks(philo_parametr *philos)
 {
+
 
 		if( philos->number  == philos->input->philo - 1)
 		{

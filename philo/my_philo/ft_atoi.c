@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:29:28 by skeveyan          #+#    #+#             */
-/*   Updated: 2022/12/28 20:27:38 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:25:20 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -21,10 +21,10 @@ int	chek_plus_minus( const char **str, int *minus_counter)
 		if (!(**str >= '0' && **str <= '9'))
 		{
 			write (1, "non corect input\n", 17);
-			return(0);
-		}	
+			return (-2);
+		}
 	}
-	return(1);
+	return (1);
 }
 
 long int	ft_atoi(const char *str)
@@ -37,8 +37,8 @@ long int	ft_atoi(const char *str)
 	while (*str == ' ' || *str == '\n' || *str == '\t'
 		||*str == '\v' || *str == '\f' || *str == '\r')
 		str++;
-	if(0 == (chek_plus_minus(&str, &minus_counter)))
-			return(0);
+	if (0 == (chek_plus_minus(&str, &minus_counter)))
+		return (0);
 	while (*str >= '0' && *str <= '9' && *str)
 	{
 		res = (res * 10) +(*str - '0');
@@ -47,5 +47,5 @@ long int	ft_atoi(const char *str)
 	if (!(*str))
 		return (res * minus_counter);
 	write (1, "non corect input\n", 17);
-	return(0);
+	return (0);
 }

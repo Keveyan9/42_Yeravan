@@ -6,47 +6,48 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:14:33 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/10 01:36:07 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:30:23 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
 
-int chek_distroy_eats_moment(philo_parametr *philos)
+static int	chek_start(t_philo_parametr *philo_a,
+t_input_argument *input, int n)
 {
-	while(timer() - philos->starteat <= philos->input->eat)
+	print_s("die is can not eat", &philo_a[n]);
+	pthread_mutex_lock(&input->m_print_lock);
+	n = 0;
+	while (n < input->philo)
 	{
-		if(philos->startsleep > 0)
-		{
-			if(timer()  - philos->startsleep > philos->input->die)
-			{
-				print_s(" die is ___________-eat",philos);
-				philos->input->print_lock = 0;
-				pthread_mutex_lock(&(philos->input->m_print_lock));
-				usleep(10);
-				pthread_mutex_unlock(&(philos->input->m_print_lock));
-				return(1);
-			}
-		}
+		pthread_detach(philo_a[n].thread);
+		pthread_mutex_destroy(&input->fork[n++]);
 	}
-	return(0);
+	return (1);
 }
 
-int chek_distroy_sleep_moment(philo_parametr *philos)
+int	chek_distroy(t_philo_parametr *philo_a, t_input_argument *input)
 {
-	while(timer() - philos->startsleep <= philos->input->sleep)
+	int	n;
+
+	n = 0;
+	while (n < input->philo)
 	{
-		if(philos->startsleep > 0)
+		if (philo_a[n].start > 10)
 		{
-			if(timer()  - philos->startsleep > philos->input->die)
+			if (philo_a[n].startsleep == 0)
+			{				
+				if (get_time() - philo_a[n].start > input->die)
+					return (chek_start(philo_a, input, n));
+			}	
+			else
 			{
-				print_s(" die is ______________sleep",philos);
-				philos->input->print_lock = 0;
-				pthread_mutex_lock(&(philos->input->m_print_lock));
-				usleep(10);
-				pthread_mutex_unlock(&(philos->input->m_print_lock));
-				return(1);
+				if (get_time() - philo_a[n].startsleep > input->die)
+					return (chek_start(philo_a, input, n));
 			}
 		}
+		n++;
+		if (n == input->philo)
+			n = 0;
 	}
-	return(0);
+	return (-1);
 }

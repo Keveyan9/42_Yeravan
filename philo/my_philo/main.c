@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:44:53 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/09 16:33:41 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:06:24 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -14,28 +14,26 @@
 int	main(int argc, char **argv)
 {	
 	t_input_argument	input;
-	philo_parametr		*philo_a;
-	
-	input.ok_siqel = -1;	
-	input.print_lock = 1;
-	input.tred_finish = 1;
+	t_philo_parametr	*philo_a;
+
+	input.ok_siqel = -1;
 	if (argc == 5 || argc == 6)
 	{
-		if(chek_argument(argv,&input) == 1)
+		if (chek_argument(argv, &input) == 1)
 		{
-			printf("is litle argument");
-			return(0);
+			printf("is non qorect input\n");
+			return (0);
 		}
-		philo_a = (philo_parametr*) malloc(sizeof(philo_parametr) * input.philo);
-		input.fork = (pthread_mutex_t*) malloc(sizeof(pthread_mutex_t) * input.philo);
+		philo_a = (t_philo_parametr *) malloc(sizeof (t_philo_parametr) * \
+				input.philo);
+		input.fork = (pthread_mutex_t *)malloc(sizeof (pthread_mutex_t) * \
+				input.philo);
 		if (creat_philo(philo_a, &input))
-			return(0);
-//		if(chek_distroy(&pthread))
-//			return(0);
-//		while(1);
-
+			return (0);
+		if (chek_distroy (philo_a, &input))
+			return (0);
 	}
 	else
-	printf("is litl or more  argumnet");
-	return(0);
+		printf("is litl or more  argumnet");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:58:33 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/08 15:57:17 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:26:06 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -23,13 +23,13 @@ int	chek_argument( char **argv, t_input_argument *input)
 		if (input->ok_siqel < 0)
 			return (0);
 	}
-	if (0 > input->philo)
+	if (0 > input->philo || 2000 < input->philo)
 		return (1);
-	if (0 > input->die)
+	if (60 > input->die)
 		return (1);
-	if (0 > input->eat)
+	if (60 > input->eat)
 		return (1);
-	if (0 > input->sleep)
+	if (60 > input->sleep)
 		return (1);
 	return (0);
 }

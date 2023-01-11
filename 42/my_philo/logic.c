@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:28:24 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/10 23:21:40 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:29:53 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -19,6 +19,7 @@ void	*logic(void *arg)
 	siqel = 0;
 	philos = arg;
 	philos->start = get_time();
+	philos->input->tred_finish = 1;
 	while (philos->input->ok_siqel == -1 || philos->input->ok_siqel > siqel++)
 	{
 		take_forks(philos);
@@ -32,5 +33,6 @@ void	*logic(void *arg)
 		philos->startthink = get_time();
 		print_s("is thinking ", philos);
 	}
+	philos->input->tred_finish = 0;
 	return (NULL);
 }

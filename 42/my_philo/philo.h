@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:16:47 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/11 00:16:52 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:27:56 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct T_INPUT_ARGUMENT
 	int				eat;
 	int				sleep;
 	int				ok_siqel;
-	int				print_lock;
 	int				tred_finish;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	m_print_lock;

@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:14:33 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/10 22:30:23 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:32:21 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -14,7 +14,8 @@
 static int	chek_start(t_philo_parametr *philo_a,
 t_input_argument *input, int n)
 {
-	print_s("die is can not eat", &philo_a[n]);
+	if (input->tred_finish != 0)
+		print_s("die is can not eat", &philo_a[n]);
 	pthread_mutex_lock(&input->m_print_lock);
 	n = 0;
 	while (n < input->philo)

@@ -6,7 +6,7 @@
 /*   By: skeveyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:44:53 by skeveyan          #+#    #+#             */
-/*   Updated: 2023/01/11 00:06:24 by skeveyan         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:56:52 by skeveyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	{
 		if (chek_argument(argv, &input) == 1)
 		{
-			printf("is non qorect input\n");
+			printf("is not correct input\n");
 			return (0);
 		}
 		philo_a = (t_philo_parametr *) malloc(sizeof (t_philo_parametr) * \
@@ -34,6 +34,6 @@ int	main(int argc, char **argv)
 			return (0);
 	}
 	else
-		printf("is litl or more  argumnet");
+		printf("is little or more argument");
 	return (0);
 }
